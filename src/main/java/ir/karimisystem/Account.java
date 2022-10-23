@@ -1,21 +1,29 @@
 package ir.karimisystem;
 
 import java.math.BigDecimal;
-import java.util.Scanner;
 
 public class Account {
 
-    String accountnumber;
+    String accountNumber;
     BigDecimal balance;
+    String ownerName;
 
-    public String getAccountnumber(){
-        return accountnumber;
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getAccountNumber(){
+        return accountNumber;
     }
 
     public void setAccountNumber(String accountnumber) {
 
-        this.accountnumber = accountnumber;
-         Math.random();
+        this.accountNumber = accountnumber;
+
     }
 
     public  BigDecimal getBalance() {

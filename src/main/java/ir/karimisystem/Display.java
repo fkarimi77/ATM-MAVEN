@@ -6,51 +6,62 @@ import java.util.Scanner;
 public class Display {
 
     public void showMenu() {
-        Scanner ch = new Scanner(System.in);
-        int choice = ch.nextInt();
+
         AccountController obj= new AccountController();
+        Scanner ch = new Scanner(System.in);
 
 
-        do {
+
+
+        while (true){
             System.out.println("Please Choose Your Action...");
-            System.out.println("--1) visit your Balance--");
-            System.out.println("--2) Transfer--");
-            System.out.println("--3) Open New ir.karimisystem.Account--");
-            System.out.println("--4) Back To Menu--");
-            System.out.println("--5) Exit--");
+            System.out.println("--1) Show the account Balance");
+            System.out.println("--2) Transfer money");
+            System.out.println("--3) Creat and open a new account");
+            System.out.println("--4) Back To Menu");
+            System.out.println("--5) Exit");
+            int choice = ch.nextInt();
 
 
             switch (choice) {
                 case 1:
-                    System.out.println("Enter the ir.karimisystem.Account Number :");
+                    System.out.println("Enter the account number :");
                     int num= ch.nextInt();
-                    String acc="123456";
-                    obj.showBalance(acc);
+                    BigDecimal balance = obj.showBalance(String.valueOf(num));
+                    System.out.println(String.format("The balance is %s",balance.toString()));
                     break;
-                case 2:
 
-                    System.out.println("Enter origin ir.karimisystem.Account number :");
-                    String origin= ch.next();
-                    String or="12345";
-                    System.out.println("Enter Destenation ir.karimisystem.Account number :");
-                    String des= ch.next();
-                    String dest="4567";
-                    System.out.println("Enter the Amount :");
-                    BigDecimal amount= ch.nextBigDecimal();
+                case 2:
+                    System.out.println("Enter origin Account number :");
+                    String or=ch.next();
+                    System.out.println("Enter deestination Account number :");
+                    String des=ch.next();
+                    System.out.println("Enter amount money :");
+                    BigDecimal money=ch.nextBigDecimal();
+                    obj.transfer(String.valueOf(or),String.valueOf(des),money);
+
+
+
                     break;
+
                 case 3:
+                    System.out.println("Enter Your name :");
+                    String nName= ch.next();
                     String cn="Karimi";
                     obj.createNewAccount(cn);
+                    break;
+
                 case 4:
                     showMenu();
                     break;
-                case 5:
+
+                    case 5:
                     System.out.println("See you Soon...");
                     break;
             }
         }
 
-        while (choice != 6);
+
 
     }
 
